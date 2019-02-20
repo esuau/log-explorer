@@ -8,12 +8,12 @@ import scala.io.Source
 object Controller {
 
   def processFile(filename: String): Unit = {
-    val connections: List[Connection] = Service.getHourConnections(Source.fromFile(filename))
-    println("List of connections :")
-    connections.foreach(println)
+    val lastHourConnections: List[Connection] = Service.getHourConnections(Source.fromFile(filename))
+    println("Last hour connections :")
+    lastHourConnections.foreach(println)
 
-    val mostActive = Service.getMostActiveServer(connections)
-    if (connections.nonEmpty) println("Most active server : " + mostActive._1 + " with " + mostActive._2 + " initiated connections.")
+    val mostActive = Service.getMostActiveServer(lastHourConnections)
+    if (lastHourConnections.nonEmpty) println("Most active server : " + mostActive._1 + " with " + mostActive._2 + " initiated connections.")
   }
 
 }
