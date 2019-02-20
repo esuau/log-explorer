@@ -18,6 +18,10 @@ object Service {
     result
   }
 
+  def getMostActiveServer(connections: List[Connection]): (String, Int) = {
+    connections.groupBy(_.sourceHost).mapValues(_.size).maxBy(_._2)
+  }
+
   private def isInLastHour(date: Date): Boolean = {
     val dateMin = Calendar.getInstance()
     val dateMax = Calendar.getInstance()

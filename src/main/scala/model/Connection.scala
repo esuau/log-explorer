@@ -2,5 +2,5 @@ package model
 
 import java.util.Date
 
-class Connection(time: Date, sourceHost: String, targetHost: String) {
+class Connection(var time: Date, var sourceHost: String, var targetHost: String) {
 }
