@@ -22,6 +22,10 @@ object Service {
     connections.groupBy(_.sourceHost).mapValues(_.size).maxBy(_._2)
   }
 
+  def getMostRecentConnection(connections: List[Connection]): Connection = {
+    connections.maxBy(_.time)
+  }
+
   private def isInLastHour(date: Date): Boolean = {
     val dateMin = Calendar.getInstance()
     val dateMax = Calendar.getInstance()
